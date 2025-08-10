@@ -1,0 +1,23 @@
+
+version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: valentina
+      POSTGRES_PASSWORD: bolsos123
+      POSTGRES_DB: bolsosdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.4
+    ports:
+      - "7700:7700"
+    environment:
+      MEILI_MASTER_KEY: "tu_clave_segura"
+
+volumes:
+  pgdata:
